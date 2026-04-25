@@ -10,8 +10,13 @@
 
   boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
   boot.initrd.kernelModules = [ ];
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/968a506c-5f4e-4a32-897d-0d5281b3bbdb";
