@@ -36,6 +36,7 @@
           modules = [
             home-manager.nixosModules.home-manager
             ./config
+            ./hosts/${hostname}/hardware.nix
             ./hosts/${hostname}/configuration.nix
             ./profiles/${profile}/configuration.nix
           ];
