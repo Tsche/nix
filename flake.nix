@@ -56,5 +56,6 @@
           hostname = "vps-8def0ca8";
           profile = "server";
         };
+      };
     };
 }
