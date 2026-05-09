@@ -6,14 +6,6 @@
   zramSwap.enable = true;
   networking.hostName = "vps-8def0ca8";
   networking.domain = "vps.ovh.net";
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = false;
-    };
-  };
-  
   networking.wireguard = {
     enable = true;
     interfaces.wg0 = {
@@ -41,6 +33,19 @@
          }
       ];
     };
+  };
+
+
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+    };
+    listenAddresses = [ 
+      { adr = "0.0.0.0"; port = 22; }
+      { adr = "10.1.1.1"; port = 2222; }
+    ];
   };
 
   system.stateVersion = "25.11";
