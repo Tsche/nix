@@ -9,5 +9,5 @@
   services.openssh.enable = true;
   users.users.root.openssh.authorizedKeys.keys = [''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOAiRJ661DOTWHv+YrIc0A29iGfJdO98bxqjA+WZ5ORC yubikey'' ];
   
-  system.stateVersion = "25.11";
+  system.stateVersion = "23.11";
 }
