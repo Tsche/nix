@@ -43,8 +43,8 @@
       PasswordAuthentication = false;
     };
     listenAddresses = [ 
-      { adr = "0.0.0.0"; port = 22; }
-      { adr = "10.1.1.1"; port = 2222; }
+      { addr = "0.0.0.0"; port = 22; }
+      { addr = "10.1.1.1"; port = 2222; }
     ];
   };
 
