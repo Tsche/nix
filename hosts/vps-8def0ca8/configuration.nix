@@ -79,5 +79,9 @@
     '';
   };
 
+  environment.systemPackages = with pkgs; [
+    kitty.terminfo
+  ];
+
   system.stateVersion = "25.11";
 }
