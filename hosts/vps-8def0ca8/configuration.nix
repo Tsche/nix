@@ -6,8 +6,13 @@
   zramSwap.enable = true;
   networking.hostName = "vps-8def0ca8";
   networking.domain = "vps.ovh.net";
-  services.openssh.enable = true;
-  services.openssh.permitRootLogin = "no";
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+    };
+  };
   
   system.stateVersion = "25.11";
 }
