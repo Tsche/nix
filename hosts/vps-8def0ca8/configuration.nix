@@ -7,7 +7,7 @@
   networking.hostName = "vps-8def0ca8";
   networking.domain = "vps.ovh.net";
   services.openssh.enable = true;
-  users.users.root.openssh.authorizedKeys.keys = [''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOAiRJ661DOTWHv+YrIc0A29iGfJdO98bxqjA+WZ5ORC yubikey'' ];
+  services.openssh.permitRootLogin = "no";
   
   system.stateVersion = "25.11";
 }
