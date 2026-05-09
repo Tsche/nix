@@ -66,13 +66,10 @@
 
     extraConfig = ''
       PermitUserEnvironment no
-      AllowTcpForwarding no
-      AllowStreamLocalForwarding no
       PermitEmptyPasswords no
       ClientAliveInterval 300
       IgnoreRhosts yes
       GatewayPorts no
-      PermitTunnel no
       TCPKeepAlive no
       HostbasedAuthentication no
       AllowAgentForwarding yes
