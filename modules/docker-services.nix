@@ -28,10 +28,24 @@ in
 
     users.users.${username}.extraGroups = [ "docker" ];
 
-    systemd.services.dns-server = lib.mkIf cfg.dnsServer.enable {
-      description = "DNS Server (Technitium DNS)";
+    systemd.services.docker-network-setup = {
+      description = "Setup Docker proxy network";
       after = [ "docker.service" ];
       requires = [ "docker.service" ];
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+      script = ''
+        ${pkgs.docker}/bin/docker network create -d bridge proxy 2>/dev/null || true
+      '';
+    };
+
+    systemd.services.dns-server = lib.mkIf cfg.dnsServer.enable {
+      description = "DNS Server (Technitium DNS)";
+      after = [ "docker.service" "docker-network-setup.service" ];
+      requires = [ "docker.service" "docker-network-setup.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "oneshot";
@@ -45,8 +59,8 @@ in
 
     systemd.services.compiler-explorer = lib.mkIf cfg.compilerExplorer.enable {
       description = "Compiler Explorer";
-      after = [ "docker.service" ];
-      requires = [ "docker.service" ];
+      after = [ "docker.service" "docker-network-setup.service" ];
+      requires = [ "docker.service" "docker-network-setup.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "oneshot";
@@ -60,8 +74,8 @@ in
 
     systemd.services.code-server = lib.mkIf cfg.codeServer.enable {
       description = "VS Code Server";
-      after = [ "docker.service" ];
-      requires = [ "docker.service" ];
+      after = [ "docker.service" "docker-network-setup.service" ];
+      requires = [ "docker.service" "docker-network-setup.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "oneshot";
