@@ -24,6 +24,33 @@
     nginx.enable = true;
   };
 
+  # WireGuard VPN interface
+  networking.wireguard.interfaces.wg0 = {
+    ips = [ "10.1.1.1/24" ];
+    listenPort = 51820;
+    privateKeyFile = "/etc/wireguard/private.key";
+    postSetup = [
+      "${pkgs.iproute2}/bin/ip addr add 10.1.1.254/32 dev wg0"
+    ];
+    postShutdown = [
+      "${pkgs.iproute2}/bin/ip addr del 10.1.1.254/32 dev wg0"
+    ];
+    peers = [
+      # {
+      #   allowedIPs = [ "10.1.1.10/32" ];
+      #   publicKeyFile = "/etc/wireguard/peer1.pub";
+      # }
+      # {
+      #   allowedIPs = [ "10.1.1.20/32" ];
+      #   publicKeyFile = "/etc/wireguard/peer2.pub";
+      # }
+      # {
+      #   allowedIPs = [ "10.1.1.30/32" ];
+      #   publicKeyFile = "/etc/wireguard/peer3.pub";
+      # }
+    ];
+  };
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable touchpad support (enabled default in most desktopManager).
