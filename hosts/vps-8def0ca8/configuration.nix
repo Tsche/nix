@@ -81,6 +81,7 @@
 
   environment.systemPackages = with pkgs; [
     kitty.terminfo
+    gnupg
   ];
 
   system.stateVersion = "25.11";
