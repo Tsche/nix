@@ -51,6 +51,10 @@
           hostname = "vms-test";
           profile = "workstation";
         };
-      };
+
+        vps-8def0ca8 = mkHost {
+          hostname = "vps-8def0ca8";
+          profile = "server";
+        };
     };
 }
