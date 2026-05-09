@@ -58,10 +58,25 @@
       PermitRootLogin = "no";
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
+      X11Forwarding = false;
     };
     listenAddresses = [ 
       { addr = "10.1.1.1"; port = 22; }
     ];
+
+    extraConfig = ''
+      PermitUserEnvironment no
+      AllowTcpForwarding no
+      AllowStreamLocalForwarding no
+      PermitEmptyPasswords no
+      ClientAliveInterval 300
+      IgnoreRhosts yes
+      GatewayPorts no
+      PermitTunnel no
+      TCPKeepAlive no
+      HostbasedAuthentication no
+      HashKnownHosts yes
+    '';
   };
 
   system.stateVersion = "25.11";
