@@ -36,5 +36,8 @@ RUN chown che:users /home/che/.ssh/authorized_keys && \
 COPY sshd_config /etc/ssh/sshd_config
 RUN ssh-keygen -A
 
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 USER che
 WORKDIR /home/che

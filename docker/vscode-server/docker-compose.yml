@@ -17,8 +17,7 @@ services:
     networks:
       - proxy
     volumes:
-      - /srv/vscode-server/entrypoint.sh:/entrypoint.sh:Z
       - /home/che/projects:/home/che/projects:Z
-      - /srv/vscode-server/config:/home/che/.config/code-server:Z
+      - /etc/nixos/docker/vscode-server/config:/home/che/.config/code-server:Z
       - /var/run/docker.sock:/var/run/docker.sock:Z
 
