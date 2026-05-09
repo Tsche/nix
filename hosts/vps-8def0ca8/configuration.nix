@@ -75,7 +75,6 @@
       PermitTunnel no
       TCPKeepAlive no
       HostbasedAuthentication no
-      HashKnownHosts yes
     '';
   };
 
