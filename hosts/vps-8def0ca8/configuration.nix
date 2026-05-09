@@ -35,6 +35,21 @@
     };
   };
 
+  networking.firewall = {
+    enable = true;
+    allowedUDPPorts = [ 51820 ];
+    trustedInterfaces = [ "wg0" ];
+  };
+  
+  networking.nat = {
+    enable = true;
+    internalInterfaces = [ "wg0" ];
+    externalInterface = "ens3";
+  };
+
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
+  };
 
   services.openssh = {
     enable = true;
