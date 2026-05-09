@@ -1,0 +1,22 @@
+{
+  "compilers": {
+    "x86-64-linux": [
+      {
+        "id": "gcc",
+        "name": "GCC trunk",
+        "path": "/usr/bin/gcc",
+        "supports": ["c", "c++"]
+      },
+      {
+        "id": "clang",
+        "name": "Clang P2996",
+        "path": "/usr/bin/clang",
+        "supports": ["c", "c++"]
+      }
+    ]
+  },
+  "server": {
+    "bind": "0.0.0.0",
+    "port": 10240
+  }
+}

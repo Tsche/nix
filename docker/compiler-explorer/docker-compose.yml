@@ -1,0 +1,18 @@
+networks:
+  proxy:
+      external: true
+
+services:
+  compiler-explorer:
+    build: .
+    container_name: compiler-explorer
+    environment:
+        VIRTUAL_HOST: ce.pydong.org,ce.fuquery.org
+        VIRTUAL_PORT: 10240
+    networks:
+      - proxy
+    ports:
+      - "10240:10240"
+#    volumes:
+#      - /srv/compiler-explorer/config:/opt/compiler-explorer/config
+    restart: unless-stopped

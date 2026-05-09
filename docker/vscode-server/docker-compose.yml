@@ -1,0 +1,24 @@
+networks:
+  proxy:
+      external: true
+
+services:
+  code-server:
+    build: .
+    container_name: code-server
+    environment:
+        VIRTUAL_HOST: code.pydong.org,code.fuquery.org
+        VIRTUAL_PORT: 8080
+        PUID: 1001
+        PGID: 100
+    ports:
+        - "10.1.1.1:22:22"
+    command: /entrypoint.sh
+    networks:
+      - proxy
+    volumes:
+      - /srv/vscode-server/entrypoint.sh:/entrypoint.sh:Z
+      - /home/che/projects:/home/che/projects:Z
+      - /srv/vscode-server/config:/home/che/.config/code-server:Z
+      - /var/run/docker.sock:/var/run/docker.sock:Z
+

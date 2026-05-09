@@ -11,6 +11,19 @@
   ...
 }:
 {
+  imports = [
+    ../../modules/docker-services.nix
+  ];
+
+  # Enable docker services
+  services.docker-services = {
+    enable = true;
+    dnsServer.enable = true;
+    compilerExplorer.enable = true;
+    codeServer.enable = true;
+    nginx.enable = true;
+  };
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable touchpad support (enabled default in most desktopManager).
