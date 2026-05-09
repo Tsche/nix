@@ -1,4 +1,4 @@
-FROM ghcr.io/rsl-org/fedora_p2996:latest
+FROM ghcr.io/fuquery/fedora_p2996:latest
 
 # code-server dependencies
 RUN dnf install -y \

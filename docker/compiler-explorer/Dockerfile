@@ -1,4 +1,4 @@
-FROM ghcr.io/rsl-org/fedora_p2996:latest
+FROM ghcr.io/fuquery/fedora_p2996:latest
 ENV PATH=/usr/local/bin:$PATH
 
 RUN dnf -y install \
