@@ -1,4 +1,4 @@
-{ ... }: {
+{ inputs, lib, config, pkgs, username, ... }: {
   # Workaround for https://github.com/NixOS/nix/issues/8502
   services.logrotate.checkConfig = false;
 
