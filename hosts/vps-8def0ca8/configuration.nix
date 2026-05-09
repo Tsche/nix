@@ -75,6 +75,7 @@
       PermitTunnel no
       TCPKeepAlive no
       HostbasedAuthentication no
+      AllowAgentForwarding yes
     '';
   };
 
