@@ -25,9 +25,20 @@
   ];    
   
   programs.zsh.enable = true;
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name = "Matthias Wippich";
+        email = "mfwippich@gmail.com";
+      };
+      init.defaultBranch = "master";
+      safe.directory = [ "/etc/nixos" ];
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     vim
-    git
     wget
     curl
     htop

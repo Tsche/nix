@@ -12,12 +12,12 @@
       ips = ["10.1.1.1/24"];
       listenPort = 51820;
       privateKeyFile = "/etc/wireguard/server.key";
-      postSetup = [
-        "${pkgs.iproute2}/bin/ip addr add 10.1.1.254/32 dev wg0"
-      ];
-      postShutdown = [
-        "${pkgs.iproute2}/bin/ip addr del 10.1.1.254/32 dev wg0"
-      ];
+      # postSetup = [
+      #   "${pkgs.iproute2}/bin/ip addr add 10.1.1.254/32 dev wg0"
+      # ];
+      # postShutdown = [
+      #   "${pkgs.iproute2}/bin/ip addr del 10.1.1.254/32 dev wg0"
+      # ];
       peers = [
          {
            allowedIPs = [ "10.1.1.10/32" ];
