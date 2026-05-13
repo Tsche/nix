@@ -1,6 +1,6 @@
 { inputs, lib, config, pkgs, username, ... }: {
   networking.hostName = "vps-8def0ca8";
-  networking.domain = "vps.ovh.net";
+  networking.domain = "pydong.org";
   networking.wireguard = {
     enable = true;
     interfaces.wg0 = {
