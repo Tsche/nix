@@ -27,7 +27,7 @@
   programs.zsh.enable = true;
   programs.git = {
     enable = true;
-    settings = {
+    config = {
       user = {
         name = "Matthias Wippich";
         email = "mfwippich@gmail.com";
