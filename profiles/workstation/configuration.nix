@@ -5,7 +5,8 @@
   pkgs,
   username,
   ...
-}: {
+}:
+{
   imports = [ ../common.nix ];
 
   # $ nix search wget
@@ -18,18 +19,32 @@
     enableSSHSupport = true;
   };
 
-  # Enable networking
+  # enable networking
   networking.networkmanager.enable = true;
   users.users.${username}.extraGroups = [ "networkmanager" ];
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  # enable GUI
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
   services.xserver.xkb = {
     layout = "de";
     variant = "";
   };
+
+  services.desktopManager.plasma6.enable = true;
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    kate
+    dolphin
+    konsole
+    okular
+    ark
+    gwenview
+    elisa
+    khelpcenter
+    print-manager
+  ];
 
   # Audio
   security.rtkit.enable = true;
@@ -40,5 +55,44 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
+  };
+
+  security.polkit.enable = true;
+  services.dbus.enable = true;
+  programs.dconf.enable = true;
+
+  fonts.packages = with pkgs; [
+    dejavu_fonts
+    inter
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    jetbrains-mono
+    nerd-fonts.jetbrains-mono
+  ];
+
+  fonts.fontconfig = {
+    enable = true;
+
+    defaultFonts = {
+      serif = [ "Noto Serif" ];
+      sansSerif = [
+        "Inter"
+        "Noto Sans"
+      ];
+      monospace = [ "JetBrains Mono" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
+
+    hinting = {
+      enable = true;
+      style = "slight";
+    };
+
+    antialias = true;
+
+    subpixel = {
+      rgba = "rgb";
+    };
   };
 }

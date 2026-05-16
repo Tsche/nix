@@ -6,24 +6,17 @@
   ...
 }:
 {
-  imports = [ ];
+  imports = [ 
+    ../../programs
+  ];
 
-  programs.firefox.enable = true;
-
-  programs.vscode = {
-    enable = true;
-    package = pkgs.unstable.vscode;
-    profiles.default = {
-      extensions = with pkgs.vscode-extensions; [
-        jnoortheen.nix-ide
-      ];
-    };
-  };
+  cfg.firefox.enable = true;
+  cfg.vscode.enable = true;
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
-    # spotify
+    spotify
     nixfmt
   ];
   #programs.git.enable = true;

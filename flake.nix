@@ -56,6 +56,11 @@
           hostname = "vps-8def0ca8";
           profile = "server";
         };
+
+        mob-x360 = mkHost {
+          hostname = "mob-x360";
+          profile = "workstation";
+        };
       };
     };
 }

@@ -7,7 +7,7 @@ The folder names must match the expected hostnames. Every hostname must match `(
 
 ### Prefixes
 Currently the following prefixes are used
-- `muc` for machines located at home
+- `lab` for the lab network
 - `mob` for mobile devices
 - `ovh` for machines hosted at OVH
 - `vms` for virtual machines
